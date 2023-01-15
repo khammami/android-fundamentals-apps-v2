@@ -1,49 +1,56 @@
-Android Developer Fundamentals (Version 2)
-==========================================
+DroidCafeOptionsUp - Solution Code
+==================================
 
-This repository contains samples, starter code, and solutions for
-Version 2 of the Android Developer Fundamentals course (August 2018).
+App that demonstrates images used as buttons and a floating action button
+to launch a second activity, which demonstrates EditText input controls
+and radio buttons. This version includes options in the options menu of
+the app bar, and the Up navigation button.
 
 Introduction
 ------------
 
-Each of the samples in this repository is associated with a practical
-exercise from the Android Developer Fundamentals course. While each
-sample stands and runs on its own, they are designed to be used
-together with the course.
-
-The Android Developer Fundamentals course is an instructor-led
-training experience and is targeted towards beginning Android
-developers with a background in software development or computer
-science.
+This app created from the Basic Activity template lets a user tap an image
+to make a choice. The app displays a Toast message showing the user’s choice.
+The app also uses an intent so that when the user taps the floating
+action button, it launches the second Activity. The second Activity
+demonstrates EditText input controls and radio buttons. This version
+includes options for the app bar options menu, in which some of the
+options appear as icons in the app bar. It also includes the Up navigation
+button for the user to navigate back to the main activity.
 
 Pre-requisites
 --------------
 
-The samples, along with the course, assume basic competence in software
-design and development, as well as some background in computer science.
-
-Specifically, to get started you need:
-
-- Familiarity with the general software development process for object-oriented
-applications using an IDE (Integrated Development Environment).
-- At least 1-3 years of experience with object-oriented programming and
-the Java programming language.
-
-For the more advanced samples, it helps to know about:
-
-- SQLite databases and the SQLite query language.
-- Software architectural patterns that separate data from the user interface,
-such as MVP, MVC, or MVA.
-- Threading
-
-You don't need to know anything about Android to get started.
+You need to know:
+- How to open, build, and run apps with Android Studio.
+- Handling a Button click.
+- Editing an XML layout file.
+- Displaying a Toast message.
 
 Getting Started
 ---------------
 
-1. [Install Android Studio](https://developer.android.com/studio/install.html),
-if you don't already have it.
-2. Download the sample.
-2. Import the sample into Android Studio.
-3. Build and run the sample.
+1. Download the code.
+2. Open the code in Android Studio.
+3. Run the app.
+
+
+License
+-------
+
+Copyright 2018 Google, Inc.
+
+Licensed to the Apache Software Foundation (ASF) under one or more contributor
+license agreements.  See the NOTICE file distributed with this work for
+additional information regarding copyright ownership.  The ASF licenses this
+file to you under the Apache License, Version 2.0 (the "License"); you may not
+use this file except in compliance with the License.  You may obtain a copy of
+the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+License for the specific language governing permissions and limitations under
+the License.
