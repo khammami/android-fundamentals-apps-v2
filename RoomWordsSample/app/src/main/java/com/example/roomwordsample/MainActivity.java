@@ -2,22 +2,18 @@ package com.example.roomwordsample;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.example.roomwordsample.adapter.WordListAdapter;
-import com.example.roomwordsample.model.Word;
-import com.google.android.material.snackbar.Snackbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.view.View;
-
+import com.example.roomwordsample.adapter.WordListAdapter;
 import com.example.roomwordsample.databinding.ActivityMainBinding;
-
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
+import com.example.roomwordsample.model.Word;
 
 public class MainActivity extends AppCompatActivity {
     public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;

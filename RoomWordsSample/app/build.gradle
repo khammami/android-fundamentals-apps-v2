@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    alias(libs.plugins.android.application)
 }
 
 android {
@@ -8,8 +8,8 @@ android {
 
     defaultConfig {
         applicationId "com.example.roomwordsample"
-        minSdk 17
-        targetSdk 33
+        minSdk 24
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -23,8 +23,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     buildFeatures {
         viewBinding true
@@ -33,24 +33,25 @@ android {
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.10.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.constraintlayout
 
     // Dépendances pour travailler avec les composants d'architecture
-    // Vous devrez probablement mettre à jour les numéros de version dans build.gradle (Project)
+    // Vous devrez probablement mettre à jour les numéros de version dans libs.versions.toml
 
     // Composant de base de données Room
-    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
-    annotationProcessor "androidx.room:room-compiler:$rootProject.roomVersion"
-    androidTestImplementation "androidx.room:room-testing:$rootProject.roomVersion"
+    implementation libs.room.runtime
+    implementation libs.activity
+    annotationProcessor libs.room.compiler
+    testImplementation libs.room.testing
 
     // Composants de cycle de vie
-    implementation "androidx.lifecycle:lifecycle-viewmodel:$rootProject.lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-livedata:$rootProject.lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-common-java8:$rootProject.lifecycleVersion"
+    implementation libs.lifecycle.viewmodel
+    implementation libs.lifecycle.livedata
+    implementation libs.lifecycle.common.java8
 
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
 }
