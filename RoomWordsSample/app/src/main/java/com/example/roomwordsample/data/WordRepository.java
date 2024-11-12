@@ -40,4 +40,8 @@ public class WordRepository {
     public void deleteWord(Word word) {
         WordRoomDatabase.databaseWriteExecutor.execute(() -> mWordDao.deleteWord(word));
     }
+
+    public void update(Word word) {
+        WordRoomDatabase.databaseWriteExecutor.execute(() -> mWordDao.update(word));
+    }
 }

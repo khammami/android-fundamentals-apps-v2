@@ -15,6 +15,7 @@ import java.util.List;
 
 public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordViewHolder> {
 
+    private static ClickListener clickListener;
     private List<Word> mWords; // Copie en cache des mots
 
     public WordListAdapter() {
@@ -56,12 +57,26 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
         return mWords.get(position);
     }
 
-    class WordViewHolder extends RecyclerView.ViewHolder {
+    public void setOnItemClickListener(ClickListener clickListener) {
+        WordListAdapter.clickListener = clickListener;
+    }
+
+    public interface ClickListener {
+        void onItemClick(View v, int position);
+    }
+
+    class WordViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final TextView wordItemView;
 
         private WordViewHolder(View itemView) {
             super(itemView);
             wordItemView = itemView.findViewById(R.id.textView);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            clickListener.onItemClick(view, getAdapterPosition());
         }
     }
 }
