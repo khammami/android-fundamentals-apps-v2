@@ -19,6 +19,7 @@ public abstract class WordRoomDatabase extends RoomDatabase {
     private static final int NUMBER_OF_THREADS = 4;
     public static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+    private static volatile WordRoomDatabase INSTANCE;
     private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
         @Override
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
@@ -30,16 +31,16 @@ public abstract class WordRoomDatabase extends RoomDatabase {
                 // Remplir la base de données en arrière-plan
                 // Si vous voulez commencer avec plus de mots, il suffit de les ajouter.
                 WordDao dao = INSTANCE.wordDao();
-                dao.deleteAll();
-
-                Word word = new Word("Hello");
-                dao.insert(word);
-                word = new Word("World");
-                dao.insert(word);
+                // Si nous n'avons pas de mots, alors créons la liste initiale de mots.
+                if (dao.getAnyWord().length < 1) {
+                    Word word = new Word("Hello");
+                    dao.insert(word);
+                    word = new Word("World");
+                    dao.insert(word);
+                }
             });
         }
     };
-    private static volatile WordRoomDatabase INSTANCE;
 
     public static WordRoomDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {

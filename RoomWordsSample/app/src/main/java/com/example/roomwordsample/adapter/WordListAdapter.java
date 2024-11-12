@@ -38,11 +38,6 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
         }
     }
 
-    public void setWords(List<Word> words) {
-        mWords = words;
-        notifyDataSetChanged();
-    }
-
     // getItemCount() est appelé plusieurs fois, et lorsqu'il est appelé pour la première fois,
     // mWords n'a pas été mis à jour (cela signifie qu'initialement, il est nul, et nous ne pouvons pas retourner nul).
     @Override
@@ -50,6 +45,15 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
         if (mWords != null)
             return mWords.size();
         else return 0;
+    }
+
+    public void setWords(List<Word> words) {
+        mWords = words;
+        notifyDataSetChanged();
+    }
+
+    public Word getWordAtPosition(int position) {
+        return mWords.get(position);
     }
 
     class WordViewHolder extends RecyclerView.ViewHolder {
