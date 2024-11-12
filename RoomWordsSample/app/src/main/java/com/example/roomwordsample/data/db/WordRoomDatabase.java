@@ -16,16 +16,12 @@ import java.util.concurrent.Executors;
 @Database(entities = {Word.class}, version = 1, exportSchema = false)
 public abstract class WordRoomDatabase extends RoomDatabase {
 
-    public abstract WordDao wordDao();
-
-    private static volatile WordRoomDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
     public static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
-
     private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
         @Override
-        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+        public void onOpen(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
 
             // Si vous souhaitez conserver les données au redémarrage de l'application
@@ -43,6 +39,7 @@ public abstract class WordRoomDatabase extends RoomDatabase {
             });
         }
     };
+    private static volatile WordRoomDatabase INSTANCE;
 
     public static WordRoomDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
@@ -58,4 +55,6 @@ public abstract class WordRoomDatabase extends RoomDatabase {
         }
         return INSTANCE;
     }
+
+    public abstract WordDao wordDao();
 }

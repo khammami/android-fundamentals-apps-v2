@@ -17,7 +17,8 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
 
     private List<Word> mWords; // Copie en cache des mots
 
-    public WordListAdapter() {}
+    public WordListAdapter() {
+    }
 
     @NonNull
     @Override
@@ -37,7 +38,7 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
         }
     }
 
-    public void setWords(List<Word> words){
+    public void setWords(List<Word> words) {
         mWords = words;
         notifyDataSetChanged();
     }
